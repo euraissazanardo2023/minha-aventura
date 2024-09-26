@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    <title>Escolha sua Aventura</title>
+    <style>
+        .btn-proximo {
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .passo {
+            display: none;
+        }
+        .passo.ativo {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="passo ativo" id="passo-0">
+            <img src="img/cenario1.png" alt="">
+            <p>Bem-vindo à sua aventura! Faça suas escolhas e explore o desconhecido.</p>
+            <button class="btn-proximo" data-proximo="1">Caminho da Floresta</button>
+            <button class="btn-proximo" data-proximo="2">Caminho da Montanha</button>
+        </div>
+        
+        <div class="passo" id="passo-1">
+            <p>A floresta é densa e escura, mas você sente que algo te observa...</p>
+            <button class="btn-proximo" data-proximo="3">Explorar mais</button>
+            <button class="btn-proximo" data-proximo="4">Desistir e voltar para o início</button>
+        </div>
+        
+        <div class="passo" id="passo-2">
+            <p>A montanha é íngreme e desafiadora, mas a vista vale a pena.</p>
+            <button class="btn-proximo" data-proximo="5">Subir mais alto</button>
+            <button class="btn-proximo" data-proximo="6">Desistir e voltar para o início</button>
+        </div>
+        
+        <div class="passo" id="passo-3">
+            <p>Você se aprofunda na floresta e encontra uma antiga cabana. Há sinais de que alguém esteve aqui recentemente.</p>
+            <button class="btn-proximo" data-proximo="7">Investigar a cabana</button>
+            <button class="btn-proximo" data-proximo="8">Ignorar e continuar explorando</button>
+        </div>
+
+        <!-- Continue replicando o modelo para os demais passos -->
+        <!-- Passo de "desistir" ou outros finais, sem botões de próximos -->
+
+        <div class="passo" id="passo-4">
+            <img src="img/cenario2.png" alt="Imagem voltando para casa e desistindo da aventura">
+            <p>Você decidiu que a floresta é assustadora demais e volta para casa. A curiosidade, no entanto, nunca o deixará em paz...</p>
+        </div>
+
+        <div class="passo" id="passo-6">
+            <img src="img/cenario2.png" alt="Imagem retornando para casa após desistir">
+            <p>Você desiste da subida e decide voltar para casa, sempre se perguntando o que teria encontrado mais alto na montanha.</p>
+        </div>
+        
+        <!-- Continue com os outros passos e cenários -->
+        
+    </main>
+    
+    <script>
+        const botoesProximo = document.querySelectorAll('.btn-proximo');
+        const passos = document.querySelectorAll('.passo');
+
+        botoesProximo.forEach(botao => {
+            botao.addEventListener('click', () => {
+                const proximoPasso = botao.getAttribute('data-proximo');
+                passos.forEach(passo => passo.classList.remove('ativo'));
+                document.getElementById('passo-' + proximoPasso).classList.add('ativo');
+            });
+        });
+    </script>
+</body>
+</html>
